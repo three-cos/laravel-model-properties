@@ -1,0 +1,56 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreatePropertiesTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('properties', function (Blueprint $table) {
+            $table->id();
+            $table->text('name');
+            $table->enum('cast', [
+                'array',
+                'boolean',
+                'collection',
+                'date',
+                'datetime',
+                'immutable_date',
+                'immutable_datetime',
+                'double',
+                'float',
+                'integer',
+                'real',
+                'string',
+                'timestamp',
+            ])->default('string');
+            $table->timestamps();
+        });
+
+        Schema::create('property_values', function (Blueprint $table) {
+            $table->id();
+            $table->morphs('entity');
+            $table->morphs('property');
+            $table->text('value')->nullable();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('properties');
+        Schema::dropIfExists('property_values');
+    }
+}

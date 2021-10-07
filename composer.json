@@ -1,0 +1,51 @@
+{
+    "name": "wardenyarn/model-properties",
+    "description": "Add properties to your Laravel model",
+    "keywords": [
+        "wardenyarn",
+        "laravel",
+        "properties",
+        "meta"
+    ],
+    "homepage": "https://github.com/wardenyarn/model-properties",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Warden Yarn",
+            "email": "three.cos@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Wardenyarn\\Properties\\": "src",
+            "App\\": "../../../app"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Wardenyarn\\Properties\\Tests\\": "tests"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Wardenyarn\\Properties\\PropertiesServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.21",
+        "phpunit/phpunit": "^9.5"
+    }
+}
